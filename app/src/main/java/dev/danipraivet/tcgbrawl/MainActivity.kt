@@ -1,24 +1,19 @@
-package dev.danipraivet.tcgbrawl;
+package dev.danipraivet.tcgbrawl
 
-import android.os.Bundle;
+import android.os.Bundle
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+class MainActivity : AppCompatActivity() {
 
-public class MainActivity extends AppCompatActivity {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        // Recuperamos el usuario logueado para mostrarlo
+        val usuario = intent.getStringExtra("usuario") ?: "Invitado"
+        findViewById<TextView>(R.id.tvBienvenida).text = "¡Bienvenido, $usuario!"
+
+        // TODO: Aquí irá el ViewPager2 + TabLayout con las pestañas (Punto 2)
     }
 }
