@@ -1,0 +1,15 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="64dp"
+    android:height="64dp"
+    android:viewportWidth="64"
+    android:viewportHeight="64">
+    <!-- Shield silhouette -->
+    <path android:fillColor="#E94560"
+        android:pathData="M32,8 L10,18 L10,38 Q10,52 32,58 Q54,52 54,38 L54,18 Z" />
+    <!-- Sword -->
+    <path android:fillColor="#FFFFFF"
+        android:pathData="M28,20 L36,20 L36,44 L32,48 L28,44 Z"
+        android:fillAlpha="0.9" />
+    <path android:fillColor="#FFD700"
+        android:pathData="M24,30 L40,30 L40,34 L24,34 Z" />
+</vector>
