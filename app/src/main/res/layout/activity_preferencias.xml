@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/bg_dark">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Preferencias"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@color/gold"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Tamaño de texto -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tamaño del nombre en el Roster"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:layout_marginBottom="8dp" />
+
+    <RadioGroup
+        android:id="@+id/rgTamanoTexto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="24dp">
+
+        <RadioButton
+            android:id="@+id/rbPequeno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pequeño"
+            android:textColor="@color/white" />
+
+        <RadioButton
+            android:id="@+id/rbNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Normal"
+            android:textColor="@color/white"
+            android:checked="true"
+            android:layout_marginStart="16dp" />
+
+        <RadioButton
+            android:id="@+id/rbGrande"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Grande"
+            android:textColor="@color/white"
+            android:layout_marginStart="16dp" />
+    </RadioGroup>
+
+    <!-- Ordenación -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ordenar Roster"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:layout_marginBottom="8dp" />
+
+    <RadioGroup
+        android:id="@+id/rgOrden"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="24dp">
+
+        <RadioButton
+            android:id="@+id/rbOrdenNinguno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sin orden"
+            android:textColor="@color/white"
+            android:checked="true" />
+
+        <RadioButton
+            android:id="@+id/rbOrdenAZ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre A-Z"
+            android:textColor="@color/white"
+            android:layout_marginStart="16dp" />
+    </RadioGroup>
+
+    <!-- Modo interfaz -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Modo de interfaz"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:layout_marginBottom="8dp" />
+
+    <RadioGroup
+        android:id="@+id/rgModo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="32dp">
+
+        <RadioButton
+            android:id="@+id/rbOscuro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Oscuro"
+            android:textColor="@color/white"
+            android:checked="true" />
+
+        <RadioButton
+            android:id="@+id/rbClaro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Claro"
+            android:textColor="@color/white"
+            android:layout_marginStart="16dp" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnGuardarPrefs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Guardar"
+        android:backgroundTint="@color/accent"
+        android:textColor="@color/white" />
+
+</LinearLayout>

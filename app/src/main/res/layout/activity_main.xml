@@ -6,6 +6,15 @@
     android:background="@color/bg_dark"
     android:orientation="vertical">
 
+    <!-- Toolbar principal -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/card_bg"
+        app:titleTextColor="@color/gold"
+        app:subtitleTextColor="@color/white" />
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"

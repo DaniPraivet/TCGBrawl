@@ -12,7 +12,8 @@ import com.example.tcgbrawl.modelo.Leyenda
 
 class AdaptadorLeyenda(
     private val leyendas: MutableList<Leyenda>,
-    private val alEliminar: (Leyenda) -> Unit
+    private val alEliminar: (Leyenda) -> Unit,
+    var tamanoTexto: String = "normal"   // "pequeno" | "normal" | "grande"
 ) : RecyclerView.Adapter<AdaptadorLeyenda.VistaLeyenda>() {
 
     inner class VistaLeyenda(vista: View) : RecyclerView.ViewHolder(vista) {
@@ -36,6 +37,11 @@ class AdaptadorLeyenda(
         val leyenda = leyendas[posicion]
 
         titular.tvNombre.text    = leyenda.nombre
+        titular.tvNombre.textSize = when (tamanoTexto) {
+            "pequeno" -> 13f
+            "grande"  -> 21f
+            else      -> 17f
+        }
         titular.tvArmas.text     = "${leyenda.arma1}  •  ${leyenda.arma2}"
         titular.tvFuerza.text    = "💪 ${leyenda.fuerza}"
         titular.tvDestreza.text  = "🤺 ${leyenda.destreza}"

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center_horizontal"
+    android:background="@color/bg_dark">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="TCG Brawl"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="@color/gold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:text="Aplicación para gestionar tu colección de leyendas y estadísticas de combate en TCG Brawl.\n\nVersión 1.0\nDesarrollado como proyecto de clase." />
+
+    <Button
+        android:id="@+id/btnAceptarInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Aceptar"
+        android:backgroundTint="@color/accent"
+        android:textColor="@color/white" />
+
+</LinearLayout>

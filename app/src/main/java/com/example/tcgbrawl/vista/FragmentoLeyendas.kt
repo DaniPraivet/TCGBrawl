@@ -1,6 +1,7 @@
 package com.example.tcgbrawl.vista
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,6 +17,9 @@ import com.example.tcgbrawl.R
 import com.example.tcgbrawl.controlador.AdaptadorLeyenda
 import com.example.tcgbrawl.modelo.GestorBBDD
 import com.example.tcgbrawl.modelo.Leyenda
+import com.example.tcgbrawl.vista.PreferenciasActivity.Companion.KEY_ORDEN
+import com.example.tcgbrawl.vista.PreferenciasActivity.Companion.KEY_TAMANO
+import com.example.tcgbrawl.vista.PreferenciasActivity.Companion.PREFS_NAME
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 
@@ -50,8 +54,14 @@ class FragmentoLeyendas : Fragment() {
         botonFlotante = vista.findViewById(R.id.fabAddLegend)
         tvListaVacia  = vista.findViewById(R.id.tvEmptyList)
 
+        val prefs = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        val tamano = prefs.getString(KEY_TAMANO, "normal") ?: "normal"
+        val orden  = prefs.getString(KEY_ORDEN, "none")
+
         leyendas.addAll(baseDatos.obtenerTodasLeyendas())
-        adaptador = AdaptadorLeyenda(leyendas) { mostrarDialogoEliminar(it) }
+        if (orden == "az") leyendas.sortBy { it.nombre.lowercase() }
+
+        adaptador = AdaptadorLeyenda(leyendas, { mostrarDialogoEliminar(it) }, tamano)
         listaRecycler.layoutManager = LinearLayoutManager(requireContext())
         listaRecycler.adapter = adaptador
 
@@ -64,13 +74,28 @@ class FragmentoLeyendas : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        aplicarPreferencias()
         refrescar()
+    }
+
+    private fun aplicarPreferencias() {
+        val prefs = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        adaptador.tamanoTexto = prefs.getString(KEY_TAMANO, "normal") ?: "normal"
+
+        val orden = prefs.getString(KEY_ORDEN, "none")
+        if (orden == "az") {
+            leyendas.sortBy { it.nombre.lowercase() }
+        }
+        adaptador.notifyDataSetChanged()
     }
 
     fun refrescar() {
         if (!isAdded) return
+        val prefs = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        val orden = prefs.getString(KEY_ORDEN, "none")
         leyendas.clear()
         leyendas.addAll(baseDatos.obtenerTodasLeyendas())
+        if (orden == "az") leyendas.sortBy { it.nombre.lowercase() }
         adaptador.notifyDataSetChanged()
         actualizarVacio()
         // también refresca el fragmento de estadísticas
